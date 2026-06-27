@@ -30,42 +30,38 @@ SDK.init("app_xxx", "key_xxx");
 在 需要拉起登录的页面代码中进行配置
 <br>
 ```Java
+import com.happsstore.sdk.SDK;
+
 SDK.launchLogin(this); //activity
 SDK.launchLogin(requireActivity());//fragment
 
 //回调代码
-@Override
-protected void onNewIntent(Intent intent) {
-    super.onNewIntent(intent);
-    setIntent(intent); 
-    handleIntent(intent);
-}
+ @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        handleIntent(intent);
+    }
 
-private void handleIntent(Intent intent) {
-    Uri data = intent.getData();
-    if (data != null && "设置的scheme".equals(data.getScheme()) && "设置的host".equals(data.getHost())) {
+    private void handleIntent(Intent intent) {
+        Log.d("MainActivity", "handleIntent: " + intent.toString());
         SDK.fetchUserInfo(intent, new SDK.UserInfoCallback() {
             @Override
             public void onSuccess(SDK.UserInfo userInfo) {
-                // 成功获取用户信息
-                Log.d("Login", "用户名: " + userInfo.getUsername());
-                Log.d("Login", "用户昵称: " + userInfo.getNickname());
-                Log.d("Login", "头像: " + userInfo.getUsertx());
-                Log.d("Login", "签名: " + userInfo.getSignature());
-                // 你的逻辑
                 runOnUiThread(() -> {
-
+                    //登录成功
+                    //用户昵称 serInfo.getNickname()
+                    //用户头像 serInfo.getUsertx()
+                    //用户签名 userInfo.getSignature();
                 });
             }
 
             @Override
             public void onError(String errorMsg) {
-                Log.e("Login", "获取用户信息失败: " + errorMsg);
                 runOnUiThread(() -> {
                     //登录失败
                 });
             }
         });
     }
-}
 ```
