@@ -12,7 +12,8 @@
 <br>在 app 的 build.gradle 文件中找到 dependencies{} 代码块，并在其中加入以下语句：
 <br>
 ```Java
-implementation(files("libs/HappsStoreSDK-1.0.aar"))
+implementation("com.google.code.gson:gson:2.10.1")//解析json 必须
+implementation(files("libs/HappsStoreSDK-1.0.aar"))//SDK主体 必须
 ```
 
 # **3.初始化SDK**
