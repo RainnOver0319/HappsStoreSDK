@@ -26,3 +26,45 @@ SDK.init("app_xxx", "key_xxx");
 配置完毕后就可以进行调用了。
 
 # **4.拉起互联登录**
+在 需要拉起登录的页面代码中进行配置
+<br>
+```Java
+SDK.launchLogin(this); //activity
+SDK.launchLogin(requireActivity());//fragment
+
+//回调代码
+@Override
+protected void onNewIntent(Intent intent) {
+    super.onNewIntent(intent);
+    setIntent(intent); 
+    handleIntent(intent);
+}
+
+private void handleIntent(Intent intent) {
+    Uri data = intent.getData();
+    if (data != null && "设置的scheme".equals(data.getScheme()) && "设置的host".equals(data.getHost())) {
+        SDK.fetchUserInfo(intent, new SDK.UserInfoCallback() {
+            @Override
+            public void onSuccess(SDK.UserInfo userInfo) {
+                // 成功获取用户信息
+                Log.d("Login", "用户名: " + userInfo.getUsername());
+                Log.d("Login", "用户昵称: " + userInfo.getNickname());
+                Log.d("Login", "头像: " + userInfo.getUsertx());
+                Log.d("Login", "签名: " + userInfo.getSignature());
+                // 你的逻辑
+                runOnUiThread(() -> {
+
+                });
+            }
+
+            @Override
+            public void onError(String errorMsg) {
+                Log.e("Login", "获取用户信息失败: " + errorMsg);
+                runOnUiThread(() -> {
+                    //登录失败
+                });
+            }
+        });
+    }
+}
+```
