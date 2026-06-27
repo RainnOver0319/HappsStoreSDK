@@ -44,7 +44,6 @@ SDK.launchLogin(requireActivity());//fragment
     }
 
     private void handleIntent(Intent intent) {
-        Log.d("MainActivity", "handleIntent: " + intent.toString());
         SDK.fetchUserInfo(intent, new SDK.UserInfoCallback() {
             @Override
             public void onSuccess(SDK.UserInfo userInfo) {
