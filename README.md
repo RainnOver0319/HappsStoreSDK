@@ -49,8 +49,8 @@ SDK.launchLogin(requireActivity());//fragment
             public void onSuccess(SDK.UserInfo userInfo) {
                 runOnUiThread(() -> {
                     //登录成功
-                    //用户昵称 serInfo.getNickname()
-                    //用户头像 serInfo.getUsertx()
+                    //用户昵称 serInfo.getNickname();
+                    //用户头像 serInfo.getUsertx();
                     //用户签名 userInfo.getSignature();
                 });
             }
