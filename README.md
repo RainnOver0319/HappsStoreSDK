@@ -24,17 +24,17 @@ implementation(files("libs/HappsStoreSDK-1.0.aar"))//SDK主体 必须
 ----其他参数----
 <activity
     android:name="页面"
-    android:exported="true"
-    android:launchMode="singleTask"
+    android:exported="true"//必须一致
+    android:launchMode="singleTask"//必须一致
     android:windowSoftInputMode="adjustResize">
     <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />
     </intent-filter>
     <intent-filter>
-        <action android:name="android.intent.action.VIEW" />
-        <category android:name="android.intent.category.DEFAULT" />
-        <category android:name="android.intent.category.BROWSABLE" />
+        <action android:name="android.intent.action.VIEW" />//必须一致
+        <category android:name="android.intent.category.DEFAULT" />//必须一致
+        <category android:name="android.intent.category.BROWSABLE" />//必须一致
         <data android:scheme="保持和互联设置一样"
             android:host="保持和互联设置一样"/>
     </intent-filter>
