@@ -16,7 +16,33 @@ implementation("com.google.code.gson:gson:2.10.1")//解析json 必须
 implementation(files("libs/HappsStoreSDK-1.0.aar"))//SDK主体 必须
 ```
 
-# **3.初始化SDK**
+# **3.配置AndroidManifest.xml**
+在application中配置activity
+<br>
+```Java
+<application
+----其他参数----
+<activity
+    android:name="页面"
+    android:exported="true"
+    android:launchMode="singleTask"
+    android:windowSoftInputMode="adjustResize">
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+    <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="保持和互联设置一样"
+            android:host="保持和互联设置一样"/>
+    </intent-filter>
+</activity>
+</application>
+```
+
+# **4.初始化SDK**
 在 Application 的实现类中的 onCreate 方法中进行配置
 <br>
 ```Java
@@ -26,7 +52,7 @@ SDK.init("app_xxx", "key_xxx");
 <br>
 配置完毕后就可以进行调用了。
 
-# **4.拉起互联登录**
+# **5.拉起互联登录**
 在 需要拉起登录的页面代码中进行配置
 <br>
 ```Java
