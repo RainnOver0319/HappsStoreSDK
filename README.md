@@ -7,6 +7,8 @@
 
 请访问：[HappsStore互联中心](https://store.mlykj.com/open/)
 
+![详情图](https://store.mlykj.com/open/2f70e702fa23d4532152b85a0524d950.png)
+
 # **2.引入SDK**
 下载本仓库中的aar文件进行导入
 <br>在 app 的 build.gradle 文件中找到 dependencies{} 代码块，并在其中加入以下语句：
